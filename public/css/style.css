@@ -26,6 +26,7 @@ table {
 table th,
 table td {
     text-align: center;
+    padding: 0.2em;
 }
 table thead tr {
     border-bottom: 2px solid #ffffee;

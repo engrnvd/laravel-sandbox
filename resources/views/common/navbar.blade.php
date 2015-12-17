@@ -20,11 +20,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+
                 @if(\Illuminate\Support\Facades\Auth::user())
                     <li><a href="<?=config('app.basePath')?>auth/logout">Logout</a></li>
                 @else
                     <li><a href="<?=config('app.basePath')?>auth/login">Login</a></li>
                 @endif
+
+                @if(\Illuminate\Support\Facades\Auth::user())
+                    <li><a href="<?=config('app.basePath')?>tasks">Tasks</a></li>
+                @endif
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
