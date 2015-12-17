@@ -1,0 +1,99 @@
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #fff;
+    background-color: #0078D7;
+    font-size: 20px;
+}
+
+body *{
+    color: #fff;
+    font-weight: normal !important;
+}
+
+.navbar-default{
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid #fff;
+}
+.navbar-default .navbar-nav>li>a,.navbar-default .navbar-brand{
+    color: #fff;
+}
+table {
+     width: 100%;
+ }
+table th,
+table td {
+    text-align: center;
+}
+table thead tr {
+    border-bottom: 2px solid #ffffee;
+}
+table tbody tr {
+    border-bottom: 1px solid #ffffee;
+}
+.linear-layout > div {
+    float: left;
+}
+
+
+button:hover {
+    color: #0078d7;
+    background-color: #fff;
+}
+button {
+    color: #fff;
+    background-color: #0078d7;
+    border: 1px solid #fff;
+    border-radius: 0;
+    width: 100%;
+}
+button[disabled],
+html input[disabled],
+button[disabled]:hover {
+    cursor: not-allowed;
+    color: #999;
+    border-color: #999;
+    background-color: #0078d7;
+}
+a {
+    color: #fff;
+}
+a:hover {
+    color: #fff;
+}
+
+form{
+    width: 50%;
+    margin: 0 auto;
+}
+
+input,
+select,
+textarea,
+input:focus {
+    margin: 0;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+}
+textarea {
+    overflow: hidden;
+    resize: none;
+}
+::-webkit-input-placeholder {
+    color: #dddddd;
+}
+:-moz-placeholder {
+    color: #dddddd;
+}
+::-moz-placeholder {
+    color: #dddddd;
+}
+:-ms-input-placeholder {
+    color: #dddddd;
+}
