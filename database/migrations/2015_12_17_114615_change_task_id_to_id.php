@@ -12,7 +12,7 @@ class ChangeTaskIdToId extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function ($table) {
+        Schema::table('tasks', function (Blueprint $table) {
             $table->renameColumn('task_id', 'id');
         });
     }
@@ -24,7 +24,7 @@ class ChangeTaskIdToId extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function ($table) {
+        Schema::table('tasks', function (Blueprint $table) {
             $table->renameColumn('id', 'task_id');
         });
     }
