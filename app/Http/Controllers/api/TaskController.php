@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Repositories\TaskRepository;
 use App\Task;
 use App\User;
 use Illuminate\Http\Request;
@@ -11,9 +12,11 @@ use App\Http\Controllers\Controller;
 
 class TaskController extends Controller
 {
-    public function __construct()
+    public $tasks;
+    public function __construct(TaskRepository $tasks)
     {
         $this->middleware('jwt.auth');
+        $this->tasks = $tasks;
     }
 
     /**
@@ -21,9 +24,9 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::all();
+        $tasks = $this->tasks->forUser($request->user());
         return $tasks;
     }
 

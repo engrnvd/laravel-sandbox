@@ -53,6 +53,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
+// added by Naveed, for debugging only
 require_once __DIR__."/../app/Helpers/debug-functions.php";
 
 $response = $kernel->handle(
