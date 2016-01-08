@@ -98,3 +98,7 @@ textarea {
 :-ms-input-placeholder {
     color: #dddddd;
 }
+
+.phpdebugbar *{
+    color: #000;
+}

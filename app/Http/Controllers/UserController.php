@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SomeEvent;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -30,6 +31,10 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        //abort(404,"safha nahi mil paya");
+
+        //event(new SomeEvent($request->user()));
+
         $user = Auth::user();
         $data = ['user' => $user];
         if($user->role == 'admin')
@@ -42,5 +47,6 @@ class UserController extends Controller
     public function view(Request $request)
     {
         return "View Action";
+
     }
 }
