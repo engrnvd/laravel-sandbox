@@ -148,6 +148,8 @@ $app = [
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        'GrahamCampbell\Markdown\MarkdownServiceProvider',
+        Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
 
     ],
 

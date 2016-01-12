@@ -6,11 +6,14 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*",
+        "laravel/framework": "5.2.*",
         "doctrine/dbal": "^2.5",
         "tymon/jwt-auth": "0.5.*",
         "barryvdh/laravel-debugbar": "^2.1",
-        "ccampbell/chromephp": "^4.1"
+        "ccampbell/chromephp": "^4.1",
+        "graham-campbell/markdown": "^5.3",
+        "appzcoder/crud-generator": "^1.0",
+        "laravelcollective/html": "^5.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
