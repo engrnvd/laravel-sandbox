@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SomeEvent;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -43,42 +44,9 @@ class UserController extends Controller
         return view('user.index',$data);
     }
 
-    public function helpers(Request $request)
+    public function view(Request $request)
     {
-//        $array = [
-//            'a' => 'b',
-//            'c' => [
-//                'd' => 'e',
-//                'f' => 'g',
-//                'h' => [
-//                    'i','j'
-//                ],
-//            ]
-//        ];
+        return "View Action";
 
-//        $array = array_dot($array);
-
-        $arr = [
-            ['name' => 'Desk', 'price' => 100],
-            ['name' => 'Desk2', 'price' => 200]
-        ];
-
-        $array = array_except($arr, ['price']); // not recursive
-
-        $user = factory(User::class)->make();
-        dd($user->attributesToArray());
-
-        dd($array);
-
-    }
-    
-    public function db (Request $request)
-    {
-        $recs = \Illuminate\Support\Facades\DB::table("tasks")->lists("name","id");
-        dd($recs);
-    }
-    
-    public function md (Request $request) {
-        return view("md.test");
     }
 }

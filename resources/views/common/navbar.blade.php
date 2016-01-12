@@ -30,7 +30,7 @@
                 @if(\Illuminate\Support\Facades\Auth::user())
                     <li><a href="<?=config('app.basePath')?>tasks">Tasks</a></li>
                 @endif
-                <li><a href="<?=config('app.basePath')?>md/test">MD</a></li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

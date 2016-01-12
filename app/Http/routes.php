@@ -33,7 +33,4 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('/helpers', "UserController@helpers");
-Route::get('/db', "UserController@db");
 Route::get('/', "UserController@index");
-Route::get('/md', "UserController@md");
