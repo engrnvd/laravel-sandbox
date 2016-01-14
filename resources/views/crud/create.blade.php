@@ -1,4 +1,7 @@
-{{dd($fields)}}
+<pre>
+{{print_r($fields)}}
+</pre>
+
 <form action="profiles" method="post">
     
     @foreach ($fields as $field)

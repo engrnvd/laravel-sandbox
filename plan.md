@@ -15,3 +15,7 @@
 - Create command: `nvd:crud table_name` to create controller, model and views for a specific table
 - Create command: `nvd:crud all` to create controller, model and views for all tables
 - Package all files into a composer package
+- **Feature**: Detect foreign keys
+    - change input type
+    - change validation rules
+    - display labels in list

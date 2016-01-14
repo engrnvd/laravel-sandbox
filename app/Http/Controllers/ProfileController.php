@@ -6,20 +6,89 @@ use App\Profile;
 
 class ProfileController extends CrudController
 {
+    protected $model;
+    protected $viewDir = "crud";
+    
     public function __construct(Profile $model)
     {
         $this->model = $model;
     }
     
-    protected function fields() 
+    public function index()
     {
-//        return \DB::select('show fields from profiles'); 
-        $platform = \Schema::getConnection()->getDoctrineSchemaManager()->getDatabasePlatform();
-        $platform->registerDoctrineTypeMapping('enum', 'string');
-        $connection = \DB::connection();
-        $sm = $connection->getDoctrineSchemaManager();
-        return $sm->listTableDetails('profiles');               
-        return \DB::select('show columns from profiles');                
+        return $this->view("index",['records' => $this->model->get()]);
     }
-    
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return $this->view("create", [
+            'fields' => $this->fields(),
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+        
+    protected function view($view, $data)
+    {
+        return view($this->viewDir.".".$view, $data);
+    }
 }
