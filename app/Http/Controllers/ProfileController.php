@@ -4,19 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 
-class ProfileController extends CrudController
+class ProfileController extends Controller
 {
-    protected $model;
-    protected $viewDir = "crud";
-    
-    public function __construct(Profile $model)
-    {
-        $this->model = $model;
-    }
+    protected $viewDir = "profile";
     
     public function index()
     {
-        return $this->view("index",['records' => $this->model->get()]);
+        return $this->view( "index", ['records' => Profile::get()] );
     }
 
     /**
@@ -26,9 +20,7 @@ class ProfileController extends CrudController
      */
     public function create()
     {
-        return $this->view("create", [
-            'fields' => $this->fields(),
-        ]);
+        return $this->view("create");
     }
 
     /**
@@ -37,9 +29,19 @@ class ProfileController extends CrudController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Profile $profile)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255|string',
+            'dob' => 'required|date',
+            'about' => 'required',
+            'is_a_good_person' => 'boolean|required',
+            'gender' => 'required|string|in:Male,Female',
+        ]);
+
+        Profile::create($request->all());
+
+        return redirect('/profiles');
     }
 
     /**
@@ -87,8 +89,39 @@ class ProfileController extends CrudController
         //
     }
         
-    protected function view($view, $data)
+    protected function view($view, $data = [])
     {
         return view($this->viewDir.".".$view, $data);
     }
+    
+    protected function fields()
+    {
+        $columns = \DB::select('show fields from '.$this->model->getTable()); 
+        $tableFields = array(); // return value
+        foreach ($columns as $column) {
+            $column = (array)$column;
+            $field = new \stdClass();
+            $field->name = $column['Field'];
+            $field->defValue = $column['Default'];
+            $field->required = $column['Null'] == 'NO';
+            $field->key = $column['Key'];
+            // type and length
+            $field->maxLength = 0;// get field and type from $res['Type']
+                $type_length = explode( "(", $column['Type'] );
+                $field->type = $type_length[0];
+                if( count($type_length) > 1 ) { // some times there is no "("
+                    $field->maxLength = (int)$type_length[1];
+                    if( $field->type == 'enum' ) { // enum has some values  'Male','Female')
+                        $matches = explode( "'", $type_length[1] );
+                        foreach($matches as $match) {
+                            if( $match && $match != "," && $match != ")" ){ $field->enumValues[] = $match; }
+                        }
+                    }
+                }
+            // everything decided for the field, add it to the array
+            $tableFields[] = $field;
+        }
+        return $tableFields;
+    }
+    
 }
