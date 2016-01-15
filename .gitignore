@@ -3,4 +3,6 @@
 Homestead.yaml
 Homestead.json
 .env
-/nbproject/private/
+/nbproject
+.idea
+.idea/workspace.xml

@@ -28,8 +28,8 @@
         <div class="form-group">
             <label>Is a Good Person?<br>
                 <select class="form-control" name="is_a_good_person" id="is_a_good_person">
-                    <option value=1 {{$profile->is_a_good_person?"selected":""}}>Yes</option>
-                    <option value=0 {{!$profile->is_a_good_person?"selected":""}}>No</option>
+                    <option value=1 {{$profile->is_a_good_person == "Yes"?"selected":""}}>Yes</option>
+                    <option value=0 {{$profile->is_a_good_person == "No"?"selected":""}}>No</option>
                 </select>
             </label>
         </div>

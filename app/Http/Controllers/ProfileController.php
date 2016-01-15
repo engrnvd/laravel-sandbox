@@ -35,7 +35,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request, Profile $profile)
     {
-        $this->validate($request, $this->validationRules());
+        $this->validate($request, Profile::validationRules());
 
         Profile::create($request->all());
 
@@ -61,7 +61,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request, Profile $profile)
     {
-        return $this->view("edit",['profile' => $profile]);
+        return $this->view( "edit", ['profile' => $profile] );
     }
 
     /**
@@ -73,7 +73,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        $this->validate($request, $this->validationRules());
+        $this->validate($request, Profile::validationRules());
 
         $profile->update($request->all());
 
@@ -95,17 +95,6 @@ class ProfileController extends Controller
     protected function view($view, $data = [])
     {
         return view($this->viewDir.".".$view, $data);
-    }
-    
-    protected function validationRules()
-    {
-        return [
-            'name' => 'required|max:255|string',
-            'dob' => 'required|date',
-            'about' => 'required',
-            'is_a_good_person' => 'required',
-            'gender' => 'required|string|in:Male,Female',
-        ];
     }
 
     protected function fields()
