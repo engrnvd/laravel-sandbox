@@ -11,7 +11,7 @@
 |
 */
 
-Route::resource("profiles","ProfileController");
+Route::resource("profile","ProfileController");
 
 Route::resource("api/task","api\TaskController");
 Route::post("api/authenticate", "api\AuthenticateController@authenticate");

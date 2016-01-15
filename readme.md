@@ -1,7 +1,7 @@
 # Milestones
 
 - Create a test crud so that the pattern can be decided
-    - Update routes.php
+    - Update `routes.php`
     - Create a test crud controller 
     - Create a test model
     - Create test views
@@ -14,8 +14,8 @@
     - Get fields information from db so that it can be passed to the `<form>` view
     - Create validation information so that it can be used by `store` and `update` methods
 
-- Automate things for table_name provided
-    - Update routes.php
+- Automate things for `table_name` provided
+    - Update `routes.php`
     - Create crud controller 
     - Create model
     - Create views
@@ -24,7 +24,15 @@
 
 - Package all files into a composer package
 
+- **Feature**: 
+    - Filter options
+    - Sorting
+
 - **Feature**: Detect foreign keys
     - change input type
     - change validation rules
     - display labels in list
+
+- **Feature**: Add Policies
+    - Create policy for update, store, delete
+    - Register policy

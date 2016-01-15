@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
@@ -31,17 +35,11 @@ class ProfileController extends Controller
      */
     public function store(Request $request, Profile $profile)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255|string',
-            'dob' => 'required|date',
-            'about' => 'required',
-            'is_a_good_person' => 'boolean|required',
-            'gender' => 'required|string|in:Male,Female',
-        ]);
+        $this->validate($request, $this->validationRules());
 
         Profile::create($request->all());
 
-        return redirect('/profiles');
+        return redirect('/profile');
     }
 
     /**
@@ -50,9 +48,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, Profile $profile)
     {
-        //
+        return $this->view("show",['profile' => $profile]);
     }
 
     /**
@@ -61,9 +59,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, Profile $profile)
     {
-        //
+        return $this->view("edit",['profile' => $profile]);
     }
 
     /**
@@ -73,9 +71,13 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Profile $profile)
     {
-        //
+        $this->validate($request, $this->validationRules());
+
+        $profile->update($request->all());
+
+        return redirect('/profile');
     }
 
     /**
@@ -84,9 +86,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Profile $profile)
     {
-        //
+        $profile->delete();
+        return redirect('/profile');
     }
         
     protected function view($view, $data = [])
@@ -94,6 +97,17 @@ class ProfileController extends Controller
         return view($this->viewDir.".".$view, $data);
     }
     
+    protected function validationRules()
+    {
+        return [
+            'name' => 'required|max:255|string',
+            'dob' => 'required|date',
+            'about' => 'required',
+            'is_a_good_person' => 'required',
+            'gender' => 'required|string|in:Male,Female',
+        ];
+    }
+
     protected function fields()
     {
         $columns = \DB::select('show fields from '.$this->model->getTable()); 
