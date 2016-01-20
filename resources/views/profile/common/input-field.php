@@ -1,1 +1,0 @@
-<input id="" name="" class="" value=""/>

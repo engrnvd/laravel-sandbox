@@ -10,11 +10,12 @@ use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
-    protected $viewDir = "profile";
+    public $viewDir = "profile";
     
     public function index()
     {
-        return $this->view( "index", ['records' => Profile::get()] );
+        $records = Profile::findRequested();
+        return $this->view( "index", ['records' => $records] );
     }
 
     /**
@@ -97,9 +98,9 @@ class ProfileController extends Controller
         return view($this->viewDir.".".$view, $data);
     }
 
-    protected function fields()
+    protected function fields($table)
     {
-        $columns = \DB::select('show fields from '.$this->model->getTable()); 
+        $columns = \DB::select('show fields from '.$table);
         $tableFields = array(); // return value
         foreach ($columns as $column) {
             $column = (array)$column;

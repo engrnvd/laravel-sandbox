@@ -10,7 +10,9 @@
         "doctrine/dbal": "^2.5",
         "tymon/jwt-auth": "0.5.*",
         "barryvdh/laravel-debugbar": "^2.1",
-        "ccampbell/chromephp": "^4.1"
+        "ccampbell/chromephp": "^4.1",
+        "nvd/crud-generator": "dev-master",
+        "laravelcollective/html": "~5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

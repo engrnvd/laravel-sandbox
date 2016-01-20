@@ -8,20 +8,43 @@
 
 <p><a href="/profile/create"><i class="fa fa-plus"></i> Add a New Profile</a></p>
 
-@if ( count($records) )
 	<table class="table table-striped">
 	    
 	    <thead>
-            <th>Id</th>
-	        <th>Name</th>
-	        <th>DOB</th>
-	        <th>Gender</th>
-	        <th>Is a Good Person</th>
+		<tr>
+            {!!\Nvd\Crud\Html::sortableTh("id","profile.index")!!}
+            {!!\Nvd\Crud\Html::sortableTh("name","profile.index")!!}
+            {!!\Nvd\Crud\Html::sortableTh("dob","profile.index","DOB")!!}
+            {!!\Nvd\Crud\Html::sortableTh("gender","profile.index")!!}
+            {!!\Nvd\Crud\Html::sortableTh("is_a_good_person","profile.index")!!}
 	        <th></th>
+		</tr>
+		<tr class="search-row">
+			<form>
+			<td><input type="number" class="form-control" name="id"></td>
+			<td><input type="text" class="form-control" name="name"></td>
+			<td><input type="date" class="form-control" name="dob"></td>
+			<td>
+				<select class="form-control" name="gender" id="gender">
+					<option></option>
+					<option>Male</option>
+					<option>Female</option>
+				</select>
+			</td>
+			<td>
+				<select class="form-control" name="is_a_good_person" id="is_a_good_person">
+					<option></option>
+					<option value=1>Yes</option>
+					<option value=0>No</option>
+				</select>
+			</td>
+			<td><button type="submit" class="form-control btn btn-primary">Search</button></td>
+			</form>
+		</tr>
 	    </thead>
 
 	    <tbody>
-	    	@foreach ( $records as $record )
+	    	@forelse ( $records as $record )
 		    	<tr>
 		    		<td>{{$record['id']}}</td>
 		    		<td>{{$record['name']}}</td>
@@ -40,16 +63,11 @@
                         </form>
 	    			</td>
 		    	</tr>
-	    	@endforeach
+			@empty
+				<tr class="alert alert-warning"><td colspan="6">No records found.</td></tr>
+	    	@endforelse
 	    </tbody>
 
 	</table>
-
-@else
-
-	<p class="alert alert-warning">No records found.</p>
-
-@endif
-
 
 @endsection

@@ -12,6 +12,18 @@ class Profile extends Model {
         return $value == 1 ? "Yes" : "No";
     }
 
+    public static function findRequested()
+    {
+        $query = Profile::query();
+        \Request::input("id") and $query->where("id",\Request::input("id"));
+        \Request::input("name") and $query->where("name","like","%".\Request::input("name")."%");
+        \Request::input("dob") and $query->where("dob",\Request::input("dob"));
+        \Request::input("gender") and $query->where("gender",\Request::input("gender"));
+        \Request::input("is_a_good_person") and $query->where("is_a_good_person",\Request::input("is_a_good_person"));
+        \Request::input("sort") and $query->orderBy(\Request::input("sort"),\Request::input("sortType","asc"));
+        return $query->get();
+    }
+
     public static function validationRules( $attributes = null )
     {
         $rules = [
