@@ -8,10 +8,6 @@ class Profile extends Model {
 
     public $guarded = ["id"];
 
-    public function getIsAGoodPersonAttribute($value) {
-        return $value == 1 ? "Yes" : "No";
-    }
-
     public static function findRequested()
     {
         $query = Profile::query();

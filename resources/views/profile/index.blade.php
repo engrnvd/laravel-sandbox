@@ -21,22 +21,22 @@
 		</tr>
 		<tr class="search-row">
 			<form>
-			<td><input type="number" class="form-control" name="id"></td>
-			<td><input type="text" class="form-control" name="name"></td>
-			<td><input type="date" class="form-control" name="dob"></td>
+			<td><input type="number" class="form-control" name="id" value="{{Request::input("id")}}"></td>
+			<td><input type="text" class="form-control" name="name" value="{{Request::input("name")}}"></td>
+			<td><input type="date" class="form-control" name="dob" value="{{Request::input("dob")}}"></td>
 			<td>
-				<select class="form-control" name="gender" id="gender">
-					<option></option>
-					<option>Male</option>
-					<option>Female</option>
-				</select>
+				{!!\Nvd\Crud\Html::selectRequested(
+					"gender",
+					["","Male","Female"],
+					['class'=>'form-control']
+				)!!}
 			</td>
 			<td>
-				<select class="form-control" name="is_a_good_person" id="is_a_good_person">
-					<option></option>
-					<option value=1>Yes</option>
-					<option value=0>No</option>
-				</select>
+				{!!\Nvd\Crud\Html::selectRequested(
+					"is_a_good_person",
+					[ "", "Yes", "No" ],
+					['class'=>'form-control']
+				)!!}
 			</td>
 			<td><button type="submit" class="form-control btn btn-primary">Search</button></td>
 			</form>
