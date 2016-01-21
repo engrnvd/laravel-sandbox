@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model {
 
-    public $guarded = ["id"];
+    public $guarded = ["id","created_at","updated_at"];
 
     public static function findRequested()
     {
@@ -17,7 +17,7 @@ class Profile extends Model {
         \Request::input("gender") and $query->where("gender",\Request::input("gender"));
         \Request::input("is_a_good_person") and $query->where("is_a_good_person",\Request::input("is_a_good_person"));
         \Request::input("sort") and $query->orderBy(\Request::input("sort"),\Request::input("sortType","asc"));
-        return $query->get();
+        return $query->paginate(15);
     }
 
     public static function validationRules( $attributes = null )

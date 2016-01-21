@@ -18,6 +18,11 @@
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+        @if ($errors->has('name'))
+            <span class="help-block text-danger">
+                {{ $errors->first('name') }}
+            </span>
+        @endif
     </div>
     <div class="form-group">
         <label for="dob">Date of Birth</label>
@@ -29,7 +34,6 @@
                 <option value=1>Yes</option>
                 <option value=0>No</option>
             </select>
-
         </label>
     </div>
     <div class="form-group">

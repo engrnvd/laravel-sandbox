@@ -1,17 +1,17 @@
-{{--dd($records)--}}
+{{--{{dd($records)}}--}}
 
 @extends('layouts.app-btsp')
 
 @section('content')
 
-<h2>Profiles</h2>
+	<h2>Profiles</h2>
 
-<p><a href="/profile/create"><i class="fa fa-plus"></i> Add a New Profile</a></p>
+	@include('crud-common.create-new-link', ['url' => 'profile'])
 
-	<table class="table table-striped">
+	<table class="table table-striped grid-view-tbl">
 	    
 	    <thead>
-		<tr>
+		<tr class="header-row">
             {!!\Nvd\Crud\Html::sortableTh("id","profile.index")!!}
             {!!\Nvd\Crud\Html::sortableTh("name","profile.index")!!}
             {!!\Nvd\Crud\Html::sortableTh("dob","profile.index","DOB")!!}
@@ -20,7 +20,7 @@
 	        <th></th>
 		</tr>
 		<tr class="search-row">
-			<form>
+			<form class="search-form">
 			<td><input type="number" class="form-control" name="id" value="{{Request::input("id")}}"></td>
 			<td><input type="text" class="form-control" name="name" value="{{Request::input("name")}}"></td>
 			<td><input type="date" class="form-control" name="dob" value="{{Request::input("dob")}}"></td>
@@ -38,7 +38,7 @@
 					['class'=>'form-control']
 				)!!}
 			</td>
-			<td><button type="submit" class="form-control btn btn-primary">Search</button></td>
+			<td>@include('crud-common.search-btn')</td>
 			</form>
 		</tr>
 	    </thead>
@@ -51,23 +51,15 @@
 		    		<td>{{$record['dob']}}</td>
 		    		<td>{{$record['gender']}}</td>
 		    		<td>{{$record['is_a_good_person']}}</td>
-		    		<td>
-                        <form class="form-inline" action="/profile/{{$record->id}}" method="POST">
-							<a href="/profile/{{$record->id}}"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;
-
-							<a href="/profile/{{$record->id}}/edit"><i class="fa fa-pencil"></i></a>&nbsp;
-
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-			    			<button type="submit" class="fa fa-remove text-danger remove-btn"></button>
-                        </form>
-	    			</td>
+		    		@include( 'crud-common.actions', [ 'url' => 'profile', 'record' => $record ] )
 		    	</tr>
 			@empty
-				<tr class="alert alert-warning"><td colspan="6">No records found.</td></tr>
+				@include('crud-common.not-found-tr')
 	    	@endforelse
 	    </tbody>
 
 	</table>
+
+	@include('crud-common.pagination', [ 'records' => $records ] )
 
 @endsection
