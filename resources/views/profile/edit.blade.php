@@ -5,12 +5,6 @@
 
     <h2>Update Profile: {{$profile->name}}</h2>
 
-    @if(count($errors))
-        <div class="text-danger">
-            <?php pr($errors)?>
-        </div>
-    @endif
-
     <form action="/profile/{{$profile->id}}" method="post">
 
         {{csrf_field()}}
