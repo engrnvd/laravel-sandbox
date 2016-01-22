@@ -148,7 +148,7 @@ $app = [
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        Nvd\Crud\Providers\NvdCrudServiceProvider::class,
     ],
 
     /*
