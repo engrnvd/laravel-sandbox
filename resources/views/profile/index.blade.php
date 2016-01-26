@@ -1,4 +1,3 @@
-{{--{{dd($records)}}--}}
 
 @extends('layouts.app-btsp')
 
@@ -6,7 +5,7 @@
 
 	<h2>Profiles</h2>
 
-	@include('crud-common.create-new-link', ['url' => 'profile'])
+	@include('vendor.crud.common.create-new-link', ['url' => 'profile'])
 
 	<table class="table table-striped grid-view-tbl">
 	    
@@ -32,13 +31,13 @@
 				)!!}
 			</td>
 			<td>
-				{!!\Nvd\Crud\Html::selectRequested(
+				{!! \Nvd\Crud\Html::selectRequested(
 					"is_a_good_person",
 					[ "", "Yes", "No" ],
 					['class'=>'form-control']
-				)!!}
+				) !!}
 			</td>
-			<td>@include('crud-common.search-btn')</td>
+			<td>@include('vendor.crud.common.search-btn')</td>
 			</form>
 		</tr>
 	    </thead>
@@ -51,15 +50,15 @@
 		    		<td>{{$record['dob']}}</td>
 		    		<td>{{$record['gender']}}</td>
 		    		<td>{{$record['is_a_good_person']}}</td>
-		    		@include( 'crud-common.actions', [ 'url' => 'profile', 'record' => $record ] )
+		    		@include( 'vendor.crud.common.actions', [ 'url' => 'profile', 'record' => $record ] )
 		    	</tr>
 			@empty
-				@include('crud-common.not-found-tr')
+				@include ('vendor.crud.common.not-found-tr')
 	    	@endforelse
 	    </tbody>
 
 	</table>
 
-	@include('crud-common.pagination', [ 'records' => $records ] )
+	@include('vendor.crud.common.pagination', [ 'records' => $records ] )
 
 @endsection

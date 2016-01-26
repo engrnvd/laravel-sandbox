@@ -39,6 +39,10 @@
         - pagination
         - search-btn
 
+- Publish config so that end user can customise the generator
+
+- Publish templates into views directory for the end user to customise
+
 - Create command: `nvd:crud all` to generate crud for all tables
 
 - Package all files into a composer package
