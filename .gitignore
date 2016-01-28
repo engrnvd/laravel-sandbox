@@ -6,3 +6,5 @@ Homestead.json
 /nbproject
 .idea
 .idea/workspace.xml
+_ide_helper.php
+_phpstorm.meta.php

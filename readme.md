@@ -1,5 +1,7 @@
 # Milestones
 
+## Completed
+
 - Create a test crud so that the pattern can be decided
     - Update `routes.php`
     - Create a test crud controller 
@@ -19,7 +21,8 @@
     - create a directory for common views
         - pagination
         - actions column etc
-        - Form and Html handler classes
+
+- Form and Html handler classes
 
 - Create command: `nvd:crud table_name` to create controller, model and views for a specific table
     - Get fields information from db so that it can be used to generate `<form>` and validation rules
@@ -43,12 +46,20 @@
 
 - Publish templates into views directory for the end user to customise
 
-- Create command: `nvd:crud all` to generate crud for all tables
-
 - Package all files into a composer package
 
 - Create Documentation
+ 
+- Enhancements:
+    - Insert route model bindings explicitly
+    - Delete button styling
 
+## Still to Accomplish
+
+- **Feature**: Ajax loading
+    - Edit: Double clicking a row should fetch the form from the server and replace the row with the form
+    - Create: Collapsed Panel
+    
 - **Feature**: Detect foreign keys
     - change input type
     - change validation rules
@@ -61,5 +72,4 @@
 - **Feature**:
     - Filter options
 
-- **Feature**:
-    - Ajax loading
+- Create command: `nvd:crud all` to generate crud for all tables
