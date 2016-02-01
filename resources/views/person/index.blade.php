@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('vendor.crud.classic-templates.common.app')
 
 @section('content')
 
 	<h2>People</h2>
 
-	@include('person.create')
+	@include('vendor.crud.classic-templates.common.create-new-link', ['url' => 'person'])
 
-	<table class="table table-striped">
+	<table class="table table-striped grid-view-tbl">
 	    
 	    <thead>
 		<tr class="header-row">
@@ -40,7 +40,7 @@
 				<td><input type="text" class="form-control" name="image" value="{{Request::input("image")}}"></td>
 				<td><input type="text" class="form-control" name="created_at" value="{{Request::input("created_at")}}"></td>
 				<td><input type="text" class="form-control" name="updated_at" value="{{Request::input("updated_at")}}"></td>
-				<td style="min-width: 6.1em;">@include('vendor.crud.common.search-btn')</td>
+				<td style="min-width: 6.1em;">@include('vendor.crud.classic-templates.common.search-btn')</td>
 			</form>
 		</tr>
 	    </thead>
@@ -57,15 +57,15 @@
 					<td>{{$record['image']}}</td>
 					<td>{{$record['created_at']}}</td>
 					<td>{{$record['updated_at']}}</td>
-					@include( 'vendor.crud.common.actions', [ 'url' => 'person', 'record' => $record ] )
+					@include( 'vendor.crud.classic-templates.common.actions', [ 'url' => 'person', 'record' => $record ] )
 		    	</tr>
 			@empty
-				@include ('vendor.crud.common.not-found-tr')
+				@include ('vendor.crud.classic-templates.common.not-found-tr',['colspan' => 10])
 	    	@endforelse
 	    </tbody>
 
 	</table>
 
-	@include('vendor.crud.common.pagination', [ 'records' => $records ] )
+	@include('vendor.crud.classic-templates.common.pagination', [ 'records' => $records ] )
 
 @endsection
