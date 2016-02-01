@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('vendor.crud.common.app')
 
 @section('content')
 
@@ -32,7 +32,7 @@
 				<td><input type="text" class="form-control" name="created_at" value="{{Request::input("created_at")}}"></td>
 				<td><input type="text" class="form-control" name="updated_at" value="{{Request::input("updated_at")}}"></td>
 				<td><input type="date" class="form-control" name="release_date" value="{{Request::input("release_date")}}"></td>
-				<td>@include('vendor.crud.common.search-btn')</td>
+				<td style="min-width: 6.1em;">@include('vendor.crud.common.search-btn')</td>
 			</form>
 		</tr>
 	    </thead>
@@ -50,7 +50,7 @@
 					@include( 'vendor.crud.common.actions', [ 'url' => 'phone', 'record' => $record ] )
 		    	</tr>
 			@empty
-				@include ('vendor.crud.common.not-found-tr')
+				@include ('vendor.crud.common.not-found-tr',['colspan' => 8])
 	    	@endforelse
 	    </tbody>
 

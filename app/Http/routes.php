@@ -39,3 +39,8 @@ Route::get('/', "UserController@index");
 
 Route::resource('person','PersonController');
 Route::resource('phone','PhoneController');
+Route::resource('profile', 'ProfileController');
+
+Route::bind('person',function($name){
+    return \App\Person::where('name',$name)->orWhere('id',$name)->first();
+});

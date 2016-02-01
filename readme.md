@@ -56,14 +56,22 @@
 
 ## Still to Accomplish
 
+-  add app.blade.php
+-  add Input facade
+
 - **Feature**: Ajax loading
     - Edit: Double clicking a row should fetch the form from the server and replace the row with the form
     - Create: Collapsed Panel
+    - View: model
     
 - **Feature**: Detect foreign keys
     - change input type
     - change validation rules
     - display labels in list
+
+- Bulk Actions
+
+- Export to .xls and .pdf
 
 - **Feature**: Add Policies
     - Create policy for update, store, delete

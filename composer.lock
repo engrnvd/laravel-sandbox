@@ -4,9 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9f4f062ae3beaa8ad80d4344586ac291",
-    "content-hash": "129b1d7e4b22de8f5b8a3d1a7f798f65",
+    "hash": "8091b0b5b84a47464df33a0fdd434dd0",
+    "content-hash": "380ceab04f8a59af067e59462f50527f",
     "packages": [
+        {
+            "name": "appzcoder/crud-generator",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appzcoder/crud-generator.git",
+                "reference": "70d950ac9caba1e204b389a5349fb0f6216156e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appzcoder/crud-generator/zipball/70d950ac9caba1e204b389a5349fb0f6216156e9",
+                "reference": "70d950ac9caba1e204b389a5349fb0f6216156e9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.*|5.2.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Appzcoder\\CrudGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sohel Amin",
+                    "email": "sohelamincse@gmail.com",
+                    "homepage": "http://www.appzcoder.com"
+                }
+            ],
+            "description": "Laravel 5 CRUD Generator",
+            "keywords": [
+                "crud",
+                "crud generator",
+                "laravel",
+                "laravel crud generator"
+            ],
+            "time": "2015-12-28 18:20:24"
+        },
         {
             "name": "barryvdh/laravel-debugbar",
             "version": "v2.1.1",
@@ -1463,7 +1507,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/engrnvd/laravel-crud-generator/zipball/e9b1166ddd9301fd97887ec45aa04b4024297f45",
+                "url": "https://api.github.com/repos/engrnvd/laravel-crud-generator/zipball/a400c088b58221ac8b41ef26fd31ac10b9963cd9",
                 "reference": "e9b1166ddd9301fd97887ec45aa04b4024297f45",
                 "shasum": ""
             },

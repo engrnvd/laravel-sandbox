@@ -4,9 +4,9 @@
 
 	<h2>People</h2>
 
-	@include('vendor.crud.common.create-new-link', ['url' => 'person'])
+	@include('person.create')
 
-	<table class="table table-striped grid-view-tbl">
+	<table class="table table-striped">
 	    
 	    <thead>
 		<tr class="header-row">
@@ -40,7 +40,7 @@
 				<td><input type="text" class="form-control" name="image" value="{{Request::input("image")}}"></td>
 				<td><input type="text" class="form-control" name="created_at" value="{{Request::input("created_at")}}"></td>
 				<td><input type="text" class="form-control" name="updated_at" value="{{Request::input("updated_at")}}"></td>
-				<td>@include('vendor.crud.common.search-btn')</td>
+				<td style="min-width: 6.1em;">@include('vendor.crud.common.search-btn')</td>
 			</form>
 		</tr>
 	    </thead>

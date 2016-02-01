@@ -25,7 +25,7 @@
 				<?php foreach ( $fields as $field )  { ?>
 <td><?=\Nvd\Crud\Db::getSearchInputStr($field)?></td>
 				<?php } ?>
-<td>@include('vendor.crud.common.search-btn')</td>
+<td style="min-width: 6.1em;">@include('vendor.crud.common.search-btn')</td>
 			</form>
 		</tr>
 	    </thead>
@@ -39,7 +39,7 @@
 @include( 'vendor.crud.common.actions', [ 'url' => '<?= $gen->route() ?>', 'record' => $record ] )
 		    	</tr>
 			@empty
-				@include ('vendor.crud.common.not-found-tr')
+				@include ('vendor.crud.common.not-found-tr',['colspan' => <?=count($fields)+1?>])
 	    	@endforelse
 	    </tbody>
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('vendor.crud.common.app')
 
 @section('content')
 
